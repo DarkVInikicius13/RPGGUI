@@ -4,7 +4,7 @@ import random
 from PyQt5.QtWidgets import QApplication, QMainWindow, QLabel, QPushButton, QVBoxLayout, QHBoxLayout, QWidget
 from PyQt5.QtGui import QIcon, QFont
 from PyQt5.QtCore import Qt
-from core.JanelaCriacao import JanelaCriar
+from core.JanelaCriacao import Janela_Criacao
 from core.JanelaPersonagem import JanelaAbrir
 
 class Janela_Principal(QWidget): #monta a janela
@@ -16,9 +16,9 @@ class Janela_Principal(QWidget): #monta a janela
         
         self.Interface_Inicial()
 
-
+#Definindo os botões
     def Abrir_Criacao(self):
-        self.ProxJanela = JanelaCriar()
+        self.ProxJanela = Janela_Criacao()
         self.ProxJanela.show()
         self.close()
 
@@ -27,7 +27,7 @@ class Janela_Principal(QWidget): #monta a janela
         self.ProxJanela2.show()
         self.close()
 
-
+# Definindo a janela
     def Interface_Inicial(self):
         Criar = QPushButton("Criar Personagem")
         Carregar = QPushButton("Carregar Personagem")
@@ -52,7 +52,7 @@ class Janela_Principal(QWidget): #monta a janela
         self.setLayout(vbox)
 
         Criar.clicked.connect(self.Abrir_Criacao)
-        Carregar.clicked.connect(self.Abrir_Criacao)
+        Carregar.clicked.connect(self.Abrir_Carregar)
 
 
 
