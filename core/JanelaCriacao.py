@@ -1,5 +1,6 @@
 from PyQt5.QtWidgets import QWidget, QLabel, QWidget, QVBoxLayout, QHBoxLayout, QLineEdit, QFileDialog, QPushButton
 from PyQt5.QtGui import QIcon, QPixmap
+import shutil
 
 class Janela_Criacao(QWidget): #monta a janela
     def __init__(self):
@@ -62,10 +63,15 @@ class Janela_Criacao(QWidget): #monta a janela
         )
 
         if caminho:
-            print(caminho)
+            shutil.copy(caminho, "images/") #copia o arquivo para a pasta de imagens do app
+            if IOError:
+                print("Erro ao carregar")
+            else:
+                print("Arquivo carregado com sucesso")
 
             pixmap = QPixmap(caminho)
             pixmap = pixmap.scaled(
                 self.ImagemEtiqueta.width(),
                 self.ImagemEtiqueta.height()
             )
+            self.ImagemEtiqueta.setPixmap(pixmap)
