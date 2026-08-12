@@ -3,11 +3,8 @@ import json
 # ---------------
 # Funções de Personagem
 # -----------------
-def CriarPersonagem():
-    pass
 
-
-def EditarAtributos():
+def EditarAtributos(Status, Valor, Label):
     pass
 
 # ---------------
