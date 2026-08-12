@@ -1,7 +1,7 @@
 from PyQt5.QtWidgets import QWidget, QLabel, QWidget, QVBoxLayout, QHBoxLayout, QLineEdit, QFileDialog, QPushButton
 from PyQt5.QtGui import QIcon, QPixmap
 import shutil
-from Character import EditarAtributos
+from core.Character import EditarAtributos
 
 class Janela_Criacao(QWidget): #monta a janela
     def __init__(self):
@@ -27,11 +27,12 @@ class Janela_Criacao(QWidget): #monta a janela
         self.BotaoEscolherImagem = QPushButton("Escolher imagem")
         self.BotaoEscolherImagem.clicked.connect(self.Selecionar_Imagem)
 
-        self.ForcaLabel = QLabel("Força")
+        self.ForcaLabel = QLabel("0")
         self.ForcaImage = QLabel("Teste")
         self.BotaoEditarForcaMais = QPushButton("+")
         self.BotaoEditarForcaMenos = QPushButton("-")
-        self.BotaoEditarForcaMais.clicked.connect(EditarAtributos("Forca", +1, self.ForcaLabel)) #placeholder para entender como montar a função depois
+        self.BotaoEditarForcaMais.clicked.connect(lambda: EditarAtributos(+1, self.ForcaLabel)) #placeholder para entender como montar a função depois
+        self.BotaoEditarForcaMenos.clicked.connect(lambda: EditarAtributos(-1, self.ForcaLabel))
 
         #Fim
         
@@ -56,6 +57,10 @@ class Janela_Criacao(QWidget): #monta a janela
 
         hbox.addWidget(self.ImagemEtiqueta)
         hbox.addWidget(self.BotaoEscolherImagem)
+
+        hbox.addWidget(self.ForcaLabel)
+        hbox.addWidget(self.BotaoEditarForcaMais)
+        hbox.addWidget(self.BotaoEditarForcaMenos)
 
         vbox.addLayout(hbox)
         self.setLayout(vbox)
