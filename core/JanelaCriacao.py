@@ -22,17 +22,48 @@ class Janela_Criacao(QWidget): #monta a janela
         
         self.Genero = QLabel("Gênero do Personagem: ", self)
         self.Genero_Input = QLineEdit(self)
+
+        self.Altura = QLabel("Altura do Personagem: ", self)
+        self.Altura_Input = QLineEdit(self)
         
         self.ImagemEtiqueta = QLabel("Nenhuma imagem selecionada")
         self.BotaoEscolherImagem = QPushButton("Escolher imagem")
         self.BotaoEscolherImagem.clicked.connect(self.Selecionar_Imagem)
 
         self.ForcaLabel = QLabel("0")
-        self.ForcaImage = QLabel("Teste")
+        self.ForcaImage = QLabel("Teste") #Deixar como imagem aqui pq tem q adicionar dps 
         self.BotaoEditarForcaMais = QPushButton("+")
         self.BotaoEditarForcaMenos = QPushButton("-")
-        self.BotaoEditarForcaMais.clicked.connect(lambda: EditarAtributos(+1, self.ForcaLabel)) #placeholder para entender como montar a função depois
+        self.BotaoEditarForcaMais.clicked.connect(lambda: EditarAtributos(+1, self.ForcaLabel))
         self.BotaoEditarForcaMenos.clicked.connect(lambda: EditarAtributos(-1, self.ForcaLabel))
+
+        self.AgilidadeLabel = QLabel("0")
+        self.AgilidadeImage = QLabel("Teste")
+        self.BotaoEditarAgilidadeMais = QPushButton("+")
+        self.BotaoEditarAgilidadeMenos = QPushButton("-")
+        self.BotaoEditarAgilidadeMais.clicked.connect(lambda: EditarAtributos(+1, self.AgilidadeLabel))
+        self.BotaoEditarAgilidadeMenos.clicked.connect(lambda: EditarAtributos(-1, self.AgilidadeLabel))
+
+        self.DefesaLabel = QLabel("0")
+        self.DefesaImage = QLabel("Teste")
+        self.BotaoEditarDefesaMais = QPushButton("+")
+        self.BotaoEditarDefesaMenos = QPushButton("-")
+        self.BotaoEditarDefesaMais.clicked.connect(lambda: EditarAtributos(+1, self.DefesaLabel))
+        self.BotaoEditarDefesaMenos.clicked.connect(lambda: EditarAtributos(-1, self.DefesaLabel))
+
+        self.PoderLabel = QLabel("0")
+        self.PoderImage = QLabel("Teste")
+        self.BotaoEditarPoderMais = QPushButton("+")
+        self.BotaoEditarPoderMenos = QPushButton("-")
+        self.BotaoEditarPoderMais.clicked.connect(lambda: EditarAtributos(+1, self.PoderLabel))
+        self.BotaoEditarPoderMenos.clicked.connect(lambda: EditarAtributos(-1, self.PoderLabel))
+
+        self.FocoLabel = QLabel("0")
+        self.FocoImage = QLabel("Teste")
+        self.BotaoEditarFocoMais = QPushButton("+")
+        self.BotaoEditarFocoMenos = QPushButton("-")
+        self.BotaoEditarFocoMais.clicked.connect(lambda: EditarAtributos(+1, self.FocoLabel))
+        self.BotaoEditarFocoMenos.clicked.connect(lambda: EditarAtributos(-1, self.FocoLabel))
 
         #Fim
         
@@ -55,12 +86,31 @@ class Janela_Criacao(QWidget): #monta a janela
         hbox.addWidget(self.Genero)
         hbox.addWidget(self.Genero_Input)
 
+        hbox.addWidget(self.Altura)
+        hbox.addWidget(self.Altura_Input)
+
         hbox.addWidget(self.ImagemEtiqueta)
         hbox.addWidget(self.BotaoEscolherImagem)
 
         hbox.addWidget(self.ForcaLabel)
         hbox.addWidget(self.BotaoEditarForcaMais)
         hbox.addWidget(self.BotaoEditarForcaMenos)
+
+        hbox.addWidget(self.AgilidadeLabel)
+        hbox.addWidget(self.BotaoEditarAgilidadeMais)
+        hbox.addWidget(self.BotaoEditarAgilidadeMenos)
+
+        hbox.addWidget(self.DefesaLabel)
+        hbox.addWidget(self.BotaoEditarDefesaMais)
+        hbox.addWidget(self.BotaoEditarDefesaMenos)
+
+        hbox.addWidget(self.PoderLabel)
+        hbox.addWidget(self.BotaoEditarPoderMais)
+        hbox.addWidget(self.BotaoEditarPoderMenos)
+
+        hbox.addWidget(self.FocoLabel)
+        hbox.addWidget(self.BotaoEditarFocoMais)
+        hbox.addWidget(self.BotaoEditarFocoMenos)
 
         vbox.addLayout(hbox)
         self.setLayout(vbox)
