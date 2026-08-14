@@ -20,8 +20,8 @@ class Janela_Criacao(QWidget): #monta a janela
         self.Peso = QLabel("Peso do Personagem: ", self)
         self.Peso_Input = QLineEdit(self)
         
-        self.Genero = QLabel("Gênero do Personagem: ", self)
-        self.Genero_Input = QLineEdit(self)
+        self.Raça = QLabel("Raça do Personagem: ", self)
+        self.Raça_Input = QLineEdit(self)
 
         self.Altura = QLabel("Altura do Personagem: ", self)
         self.Altura_Input = QLineEdit(self)
@@ -83,8 +83,8 @@ class Janela_Criacao(QWidget): #monta a janela
         hbox.addWidget(self.Peso)
         hbox.addWidget(self.Peso_Input)
         
-        hbox.addWidget(self.Genero)
-        hbox.addWidget(self.Genero_Input)
+        hbox.addWidget(self.Raça)
+        hbox.addWidget(self.Raça_Input)
 
         hbox.addWidget(self.Altura)
         hbox.addWidget(self.Altura_Input)
