@@ -1,5 +1,6 @@
 from PyQt5.QtWidgets import QWidget, QLabel, QWidget, QVBoxLayout, QHBoxLayout, QLineEdit, QFileDialog, QPushButton
 from PyQt5.QtGui import QIcon, QPixmap
+from PyQt5.QtCore import Qt
 import shutil
 from core.Character import EditarAtributos
 
@@ -7,10 +8,11 @@ class Janela_Criacao(QWidget): #monta a janela
     def __init__(self):
         super().__init__()
         self.setWindowTitle("RPG GUI")
-        self.setGeometry(500, 500, 350, 150)
+        self.setGeometry(500, 250, 500, 720)
         self.setWindowIcon(QIcon("images/icon.png"))
 
         #Inicio da definição das caixas de texto para criação dos personagens.
+
         self.Nome = QLabel("Nome do Personagem: ", self)
         self.Nome_Input = QLineEdit(self)
         
@@ -70,50 +72,10 @@ class Janela_Criacao(QWidget): #monta a janela
         self.Interface_Criacao()
 
     def Interface_Criacao(self): #Aqui é só a interface, parte estética.
-        
-        hbox = QHBoxLayout()
-        vbox = QVBoxLayout()
-        
-        hbox.addWidget(self.Nome)
-        hbox.addWidget(self.Nome_Input)
-
-        hbox.addWidget(self.Idade)
-        hbox.addWidget(self.Idade_Input)
-        
-        hbox.addWidget(self.Peso)
-        hbox.addWidget(self.Peso_Input)
-        
-        hbox.addWidget(self.Raça)
-        hbox.addWidget(self.Raça_Input)
-
-        hbox.addWidget(self.Altura)
-        hbox.addWidget(self.Altura_Input)
-
-        hbox.addWidget(self.ImagemEtiqueta)
-        hbox.addWidget(self.BotaoEscolherImagem)
-
-        hbox.addWidget(self.ForcaLabel)
-        hbox.addWidget(self.BotaoEditarForcaMais)
-        hbox.addWidget(self.BotaoEditarForcaMenos)
-
-        hbox.addWidget(self.AgilidadeLabel)
-        hbox.addWidget(self.BotaoEditarAgilidadeMais)
-        hbox.addWidget(self.BotaoEditarAgilidadeMenos)
-
-        hbox.addWidget(self.DefesaLabel)
-        hbox.addWidget(self.BotaoEditarDefesaMais)
-        hbox.addWidget(self.BotaoEditarDefesaMenos)
-
-        hbox.addWidget(self.PoderLabel)
-        hbox.addWidget(self.BotaoEditarPoderMais)
-        hbox.addWidget(self.BotaoEditarPoderMenos)
-
-        hbox.addWidget(self.FocoLabel)
-        hbox.addWidget(self.BotaoEditarFocoMais)
-        hbox.addWidget(self.BotaoEditarFocoMenos)
-
-        vbox.addLayout(hbox)
-        self.setLayout(vbox)
+        self.BackgroundLabel = QLabel(self)
+        self.BackgroundLabel.setGeometry(0, 0, 500, 720)
+        Background = QPixmap("images/Background.png").scaled(self.size(), aspectRatioMode= Qt.KeepAspectRatio, transformMode=Qt.SmoothTransformation)
+        self.BackgroundLabel.setPixmap(Background)
 
     
     def Selecionar_Imagem(self):
