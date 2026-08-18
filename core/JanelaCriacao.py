@@ -8,30 +8,48 @@ class Janela_Criacao(QWidget): #monta a janela
     def __init__(self):
         super().__init__()
         self.setWindowTitle("RPG GUI")
-        self.setGeometry(500, 250, 500, 720)
+        self.setFixedSize(500, 720)
         self.setWindowIcon(QIcon("images/icon.png"))
+        
+        self.Interface_Criacao()
 
-        #Inicio da definição das caixas de texto para criação dos personagens.
+    def Interface_Criacao(self): #Aqui é só a interface, parte estética.
+
+        self.BackgroundLabel = QLabel(self)
+        self.BackgroundLabel.setGeometry(0, 0, 500, 725)
+        Background = QPixmap("images/Background.png").scaled(self.size())
+        self.BackgroundLabel.setPixmap(Background)
+
+        # Inicio dos Botões
 
         self.Nome = QLabel("Nome do Personagem: ", self)
         self.Nome_Input = QLineEdit(self)
-        
+
+
         self.Idade = QLabel("Idade: ", self)
         self.Idade_Input = QLineEdit(self)
-        
+
+                
         self.Peso = QLabel("Peso do Personagem: ", self)
         self.Peso_Input = QLineEdit(self)
-        
+
+                
         self.Raça = QLabel("Raça do Personagem: ", self)
         self.Raça_Input = QLineEdit(self)
 
+        
         self.Altura = QLabel("Altura do Personagem: ", self)
         self.Altura_Input = QLineEdit(self)
-        
-        self.ImagemEtiqueta = QLabel("Nenhuma imagem selecionada")
+
+
+        ImagemPixmap = QPixmap("/images/CharacterImage.png")
+        self.ImagemEtiqueta = QLabel(" ").raise_()
+        self.ImagemEtiqueta.setPixmap(ImagemPixmap) #Tem q ver como resolve isso dps
+        self.ImagemEtiqueta.setGeometry()
         self.BotaoEscolherImagem = QPushButton("Escolher imagem")
         self.BotaoEscolherImagem.clicked.connect(self.Selecionar_Imagem)
 
+        
         self.ForcaLabel = QLabel("0")
         self.ForcaImage = QLabel("Teste") #Deixar como imagem aqui pq tem q adicionar dps 
         self.BotaoEditarForcaMais = QPushButton("+")
@@ -39,6 +57,7 @@ class Janela_Criacao(QWidget): #monta a janela
         self.BotaoEditarForcaMais.clicked.connect(lambda: EditarAtributos(+1, self.ForcaLabel))
         self.BotaoEditarForcaMenos.clicked.connect(lambda: EditarAtributos(-1, self.ForcaLabel))
 
+        
         self.AgilidadeLabel = QLabel("0")
         self.AgilidadeImage = QLabel("Teste")
         self.BotaoEditarAgilidadeMais = QPushButton("+")
@@ -46,6 +65,7 @@ class Janela_Criacao(QWidget): #monta a janela
         self.BotaoEditarAgilidadeMais.clicked.connect(lambda: EditarAtributos(+1, self.AgilidadeLabel))
         self.BotaoEditarAgilidadeMenos.clicked.connect(lambda: EditarAtributos(-1, self.AgilidadeLabel))
 
+        
         self.DefesaLabel = QLabel("0")
         self.DefesaImage = QLabel("Teste")
         self.BotaoEditarDefesaMais = QPushButton("+")
@@ -53,6 +73,7 @@ class Janela_Criacao(QWidget): #monta a janela
         self.BotaoEditarDefesaMais.clicked.connect(lambda: EditarAtributos(+1, self.DefesaLabel))
         self.BotaoEditarDefesaMenos.clicked.connect(lambda: EditarAtributos(-1, self.DefesaLabel))
 
+        
         self.PoderLabel = QLabel("0")
         self.PoderImage = QLabel("Teste")
         self.BotaoEditarPoderMais = QPushButton("+")
@@ -60,6 +81,7 @@ class Janela_Criacao(QWidget): #monta a janela
         self.BotaoEditarPoderMais.clicked.connect(lambda: EditarAtributos(+1, self.PoderLabel))
         self.BotaoEditarPoderMenos.clicked.connect(lambda: EditarAtributos(-1, self.PoderLabel))
 
+        
         self.FocoLabel = QLabel("0")
         self.FocoImage = QLabel("Teste")
         self.BotaoEditarFocoMais = QPushButton("+")
@@ -67,17 +89,9 @@ class Janela_Criacao(QWidget): #monta a janela
         self.BotaoEditarFocoMais.clicked.connect(lambda: EditarAtributos(+1, self.FocoLabel))
         self.BotaoEditarFocoMenos.clicked.connect(lambda: EditarAtributos(-1, self.FocoLabel))
 
-        #Fim
-        
-        self.Interface_Criacao()
+        #Fim dos botões
 
-    def Interface_Criacao(self): #Aqui é só a interface, parte estética.
-        self.BackgroundLabel = QLabel(self)
-        self.BackgroundLabel.setGeometry(0, 0, 500, 720)
-        Background = QPixmap("images/Background.png").scaled(self.size(), aspectRatioMode= Qt.KeepAspectRatio, transformMode=Qt.SmoothTransformation)
-        self.BackgroundLabel.setPixmap(Background)
 
-    
     def Selecionar_Imagem(self):
         caminho, _ = QFileDialog.getOpenFileName(
             self,
