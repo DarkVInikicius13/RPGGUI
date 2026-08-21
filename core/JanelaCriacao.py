@@ -10,15 +10,13 @@ class Janela_Criacao(QWidget): #monta a janela
         self.setWindowTitle("RPG GUI")
         self.setFixedSize(500, 720)
         self.setWindowIcon(QIcon("images/icon.png"))
-        
-        self.Interface_Criacao()
 
-    def Interface_Criacao(self): #Aqui é só a interface, parte estética.
 
         self.BackgroundLabel = QLabel(self)
         self.BackgroundLabel.setGeometry(0, 0, 500, 725)
         Background = QPixmap("images/Background.png").scaled(self.size())
         self.BackgroundLabel.setPixmap(Background)
+        self.BackgroundLabel.lower()
 
         # Inicio dos Botões
 
@@ -29,11 +27,11 @@ class Janela_Criacao(QWidget): #monta a janela
         self.Idade = QLabel("Idade: ", self)
         self.Idade_Input = QLineEdit(self)
 
-                
+
         self.Peso = QLabel("Peso do Personagem: ", self)
         self.Peso_Input = QLineEdit(self)
 
-                
+
         self.Raça = QLabel("Raça do Personagem: ", self)
         self.Raça_Input = QLineEdit(self)
 
@@ -42,10 +40,11 @@ class Janela_Criacao(QWidget): #monta a janela
         self.Altura_Input = QLineEdit(self)
 
 
-        ImagemPixmap = QPixmap("/images/CharacterImage.png")
-        self.ImagemEtiqueta = QLabel(" ").raise_()
-        self.ImagemEtiqueta.setPixmap(ImagemPixmap) #Tem q ver como resolve isso dps
-        self.ImagemEtiqueta.setGeometry()
+        ImagemPixmap = QPixmap("images/CharacterImage.png")
+        self.ImagemEtiqueta = QLabel("", self)
+        self.ImagemEtiqueta.raise_()
+        self.ImagemEtiqueta.setPixmap(ImagemPixmap)
+        self.ImagemEtiqueta.setGeometry(50 , 50, 162, 280)
         self.BotaoEscolherImagem = QPushButton("Escolher imagem")
         self.BotaoEscolherImagem.clicked.connect(self.Selecionar_Imagem)
 
@@ -90,7 +89,13 @@ class Janela_Criacao(QWidget): #monta a janela
         self.BotaoEditarFocoMenos.clicked.connect(lambda: EditarAtributos(-1, self.FocoLabel))
 
         #Fim dos botões
+        
+        
+        self.Interface_Criacao()
 
+    def Interface_Criacao(self): #Aqui é só a interface, parte estética.
+        pass
+        
 
     def Selecionar_Imagem(self):
         caminho, _ = QFileDialog.getOpenFileName(
