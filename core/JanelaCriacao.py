@@ -41,11 +41,12 @@ class Janela_Criacao(QWidget): #monta a janela
 
 
         ImagemPixmap = QPixmap("images/CharacterImage.png")
-        self.ImagemEtiqueta = QLabel("", self)
+        self.ImagemEtiqueta = QLabel("", self) #o problema tava na falta do self aqui
         self.ImagemEtiqueta.raise_()
         self.ImagemEtiqueta.setPixmap(ImagemPixmap)
         self.ImagemEtiqueta.setGeometry(50 , 50, 162, 280)
-        self.BotaoEscolherImagem = QPushButton("Escolher imagem")
+        self.BotaoEscolherImagem = QPushButton("")
+        self.BotaoEscolherImagem.setIcon("")
         self.BotaoEscolherImagem.clicked.connect(self.Selecionar_Imagem)
 
         
